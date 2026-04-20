@@ -28,8 +28,9 @@ echo '[4/6] Instalando PHP...'
 apt-get install -y php libapache2-mod-php php-mysql
 
 # 5. Instalar y configurar FTP (vsftpd)
-echo '[5/6] Configurando FTP...'apt-get install -y vsftpd
-sudo addusser ftpuser
+echo '[5/6] Configurando FTP...'
+apt-get install -y vsftpd
+sudo adduser ftpuser
 sudo mkdir -p /home/ftpuser/fpt/upload
 sudo chown nobody:nogroup /home/ftpuser/ftp
 sudo chown ftpuser:ftpuser /home/ftpuser/ftp/upload
