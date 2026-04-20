@@ -30,13 +30,16 @@ apt-get install -y php libapache2-mod-php php-mysql
 # 5. Instalar y configurar FTP (vsftpd)
 echo '[5/6] Configurando FTP...'
 apt-get install -y vsftpd
-sudo adduser ftpuser
-sudo mkdir -p /home/ftpuser/ftp/upload
-sudo chown nobody:nogroup /home/ftpuser/ftp
-sudo chown ftpuser:ftpuser /home/ftpuser/ftp/upload
+useradd -m -s /bin/bash ftpuser
+echo "ftpuser:password123" | chpasswd
+
+mkdir -p /home/ftpuser/ftp/upload
+chown nobody:nogroup /home/ftpuser/ftp
+chown ftpuser:ftpuser /home/ftpuser/ftp/upload
 
 # 6. Configurar SSH
 echo '[6/6] Configurando SSH...'
+apt-get update
 apt-get install -y openssh-server
 
 systemctl enable ssh
