@@ -1,6 +1,7 @@
 #!/bin/bash
 # Script de monitoreo - TechSolutions S.A.
 
+sudo cat /var/log/techsolutions_monitor.log
 LOG='/var/log/techsolutions_monitor.log'
 UMBRAL_CPU=80
 FECHA=$(date '+%Y-%m-%d %H:%M:%S')
@@ -21,3 +22,12 @@ if (( $(echo "$CPU > $UMBRAL_CPU" | bc -l) )); then
  echo "[$FECHA] ALERTA: CPU al $CPU% - supera umbral de $UMBRAL_CPU%" >> $LOG
  echo "ALERTA CPU ALTA: $CPU%" | wall # mensaje a todos los usuarios
 fi
+
+echo "------------------------------------"
+echo "Estado actual para TechSolutions:"
+echo "Fecha: $FECHA"
+echo "CPU: $CPU%"
+echo "RAM: $RAM%"
+echo "DISCO: $DISCO"
+echo "RED RECIBIDA: $RED bytes"
+echo "------------------------------------"
